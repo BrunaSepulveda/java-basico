@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class EmployeeList {
   private ArrayList<Employee> listEmployees = new ArrayList<>();
@@ -10,15 +11,15 @@ public class EmployeeList {
     listEmployees.add(newEmployee);
   }
 
-  public Employee findEmployeeById(int id){
-    Employee foundEmployee = listEmployees.stream().filter(x -> x.id == id).findFirst().orElse(null);
+  public Optional<Employee> findEmployeeById(int id){
+    Optional<Employee> foundEmployee = listEmployees.stream().filter(x -> x.id == id).findFirst();
     return foundEmployee;
   }
 
   public void incrementSalary(int id, double percent){
-    Employee foundEmployee = this.findEmployeeById(id);
-    if(foundEmployee != null) {
-      foundEmployee.incrementSalary(percent);
+    Optional<Employee> foundEmployee = this.findEmployeeById(id);
+    if(foundEmployee.isPresent()) {
+      foundEmployee.get().incrementSalary(percent);
     } else {
       System.out.println("Esse id não corresponde a nenhum funcionário");
     }
