@@ -37,10 +37,10 @@ public class DateTest {
     System.out.println("d06 = " + d06);
   }
 
-  public static void parsingDateOfPattern(String dateString, String pattern){
+  public static LocalDate parsingDateOfPattern(String dateString, String pattern){
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
     LocalDate d07 = LocalDate.parse(dateString, formatter);
-    System.out.println("d07 = " + d07);
+    return d07;
   }
 
   public static void parsingDateOf(int year, int month, int day){

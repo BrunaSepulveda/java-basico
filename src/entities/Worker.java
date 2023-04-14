@@ -77,4 +77,8 @@ public class Worker {
     }
     return sum;
   }
+
+  public String toStringNameDepartment(){
+    return "Nome: " + name + ", departamento: " + department.getName() + ", valor a receber: ";
+  }
 }
